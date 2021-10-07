@@ -1,0 +1,101 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    
+		Scanner scan=new Scanner(System.in);
+		//1
+		/*
+		int sum=0;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Unesite prvi broj:");
+		sum+=scan.nextInt();
+		System.out.println("Unesite drugi broj:");
+		sum+=scan.nextInt();
+		System.out.println("Unesite treći broj:");
+		sum+=scan.nextInt();
+		System.out.print("Zbir ova tri je "+sum);
+        
+        //2
+        int sum=0;
+        System.out.println("Unesite prvi broj:");
+        sum+=scan.nextInt();
+        int i=1;
+        while(i!=0)
+        {
+            i=scan.nextInt();
+            sum+=i;
+        }
+        System.out.println("Suma je "+sum);
+
+        //3
+        int i=0;
+        while(i<100)
+        {
+            i++;
+        System.out.println(i);
+        }
+        //4
+        int i=0;
+        while(i<100)
+        {
+            i++;
+        System.out.println(101-i);
+        }
+
+        //5
+        int i=2;
+        while(true)
+        {
+            if(i==100)break;
+            System.out.println(i);
+            i+=2;
+        }
+		        
+		//6
+		System.out.println("Up to what number?");
+		int limit=scan.nextInt();
+		for(int i=1;i<limit+1;i++)System.out.println(i);
+		
+		//7
+		System.out.print("First:");
+		int first=scan.nextInt();
+		System.out.print("Second:");
+		int second=scan.nextInt();
+		for(int i=first;i<=second;i++)System.out.println(i);
+		//8
+	    System.out.println("Up to?");
+		int limit = scan.nextInt();
+		int sum=0;
+		for(int i=0;i<=limit;i++)sum+=i;
+		System.out.println("Sum="+sum);
+		//9
+		System.out.print("First:");
+		int first=scan.nextInt();
+		System.out.print("Second:");
+		int second=scan.nextInt();
+		int sum=0;
+		for(int i=first;i<=second;i++)
+		{
+		    sum+=i;
+		}
+		System.out.println(sum);
+		
+		//10
+	    System.out.println("Factorial up to?");
+		int limit = scan.nextInt();
+		int fact=1;
+		for(int i=1;i<=limit;i++)fact*=i;
+		System.out.println("Factorial = "+fact);
+		*/
+		//11
+		
+	}
+}
