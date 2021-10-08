@@ -90,7 +90,18 @@ public class Main
 		System.out.println("Factorial = "+fact);
 		*/
 		//11
-		Sum of the powers
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Unesi  broj:");
+		int limit = scan.nextInt();
+		int sumpowers=0;
+		for(int i=0;i<=limit;i++)sumpowers+=Math.pow(2,i);
+		System.out.println("Rezultat je:"+sumpowers);
+		//12
+		System.out.println("Type numbers:");
+		Scanner scan=new Scanner(System.in);
+		while(scan.nextInt()!=-1);
+		System.out.println("Thank you and see you later!");
+		//methods
 		
 	}
 }
