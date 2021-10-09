@@ -102,6 +102,73 @@ public class Main
 		while(scan.nextInt()!=-1);
 		System.out.println("Thank you and see you later!");
 		//methods
-		
+		//13
+		public static void printText(){
+	    	System.out.println("In the beginning there were the swamp, the hoe and JAva.");
+		//14
+		public static void PrintText ()
+  		{
+    		Scanner scan = new Scanner (System.in);
+    		System.out.println ("How many times?");
+    		int repeat = scan.nextInt ();
+    		int i = 0;
+    		while (i++ != repeat)
+      		printText ();
+		}
+		//15
+    public static void printStars(int reps)
+    {
+        for(int i=0;i<reps;i++)System.out.print("*");
+        System.out.println("");
+    }		
+    		//16
+	public static void printwhitespaces(int num){
+	    for(int i=0;i<num;i++)System.out.print(" ");
 	}
-}
+	public static void printstars(int num){
+	    for(int i=0;i<num;i++)System.out.print("*");
+	}
+	
+	public static void printTriangle(int size){
+	    for(int i=0;i<size+1;i++)
+	    {
+	        printwhitespaces(size-i);
+	        printstars(i);
+	        System.out.println(" ");
+	    }
+	    	//17
+		public static void main(String[] args) {
+        int number=drawguess();
+        takeguess(number);
+	}
+	
+    public static int drawguess()
+    {
+        return (int)(Math.random()*100);
+    }
+    
+    public static void takeguess(int wanted)
+    {
+        int count=0;
+        while (true)
+        {
+            System.out.println("Take a guess!");
+            Scanner scan=new Scanner(System.in);
+            int guessed=scan.nextInt();
+            if(guessed==wanted)
+            {
+                System.out.println("Your guess is correct!");
+                break;
+            }
+            else 
+            {
+                count++;
+                if(guessed>wanted)System.out.print("The number is lower, ");
+                else System.out.print("The number is greater, ");
+                System.out.println("Guesses made: "+count);
+            }
+        }
+    }
+    		//18
+	    
+
