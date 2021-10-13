@@ -218,4 +218,20 @@
         return prosjek;
     }
     //65 The lengths of the strings
-    
+    	public static ArrayList<Integer> dajduzine(ArrayList<String> lista)
+	{
+	    ArrayList<Integer> newlist=new ArrayList<Integer>();
+	    for(String word:lista) newlist.add(word.length());
+	    return newlist;
+	}
+	//66 The greatest
+		public static int najveci(ArrayList<Integer> lista)
+	{
+	    int najveci=lista.get(0);
+	    for(int broj:lista)
+	    if(broj>najveci)najveci=broj;
+	    return(najveci);
+	}
+	//67 Variance
+	//have skipped this one as it is quite confusing, 
+	//don't know what I'm supposed to do exactly
