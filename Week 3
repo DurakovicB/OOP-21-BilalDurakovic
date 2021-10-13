@@ -235,3 +235,20 @@
 	//67 Variance
 	//have skipped this one as it is quite confusing, 
 	//don't know what I'm supposed to do exactly
+	//68 more than once in the list
+	    public static boolean moreThanOnce(ArrayList<Integer> list, int wanted)
+    {
+        int counter=0;
+        for(int number:list)if(number==wanted)counter++;
+        if(counter<=1)return true; else return false;
+    }
+    	//69 Pallindrome
+	    public static boolean is_A_Pallindrome(String rijec)
+    {
+        ArrayList<Character> real =new ArrayList<Character>();
+        for(int i=0;i<rijec.length();i++)real.add(rijec.charAt(i));
+        ArrayList<Character> reverse =new ArrayList<Character>();
+        for(int i=rijec.length()-1;i>=0;i--)reverse.add(rijec.charAt(i));
+        if(real.equals(reverse))return true;
+        return false;
+    }
