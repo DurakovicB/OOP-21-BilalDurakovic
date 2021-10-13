@@ -3,8 +3,18 @@ import java.util.Scanner;
 public class Main
 {
 	public static void main(String[] args) {
-	    
-		Scanner scan=new Scanner(System.in);
+			//Password
+			Scanner scan=new Scanner(System.in);
+			
+	    		System.out.print("Unesi password:");
+		while(!(scan.nextLine().equals("IBU")))
+		{
+		    System.out.print("Unesi password:");
+		    
+		}
+        System.out.println("Tačno!\nTajna je paradajz!");
+	
+		
 		//1
 		/*
 		int sum=0;
