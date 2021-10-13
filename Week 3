@@ -124,4 +124,98 @@
         return newword;
     }
   //OBJECT
-  
+  	//57 Words
+	    public static void main(String[] args){
+        Scanner scan= new Scanner(System.in);
+        ArrayList<String> words=new ArrayList<String>();
+        while(true)
+        {
+            System.out.print("Type a word: ");
+            String i=scan.nextLine();
+            if(i.equals(""))break;
+            words.add(i);
+        }
+        System.out.println("Riječi su:");
+        for(String word : words)System.out.println(word);
+        
+    }
+    //58 Recurring word
+        public static void main(String[] args){
+        ArrayList<String> words = new ArrayList<String>();
+        Scanner scan = new Scanner(System.in);
+        while(true)
+        {
+            System.out.print("Type a word: ");
+            String i = scan.nextLine();
+            if(words.contains(i))
+            {
+                System.out.println("You gave the word "+i+" twice.");
+                break;
+                
+            }
+            words.add(i);
+        }
+        
+    }
+    //59 Words in reversed order 
+    public static void main(String[] args){
+        ArrayList<String> words = new ArrayList<String>();
+        Scanner scan = new Scanner(System.in);
+        while(true)
+        {
+            System.out.print("Type a word: ");
+            String i = scan.nextLine();
+            if(i.equals(""))break;
+            words.add(i);
+        }
+        Collections.reverse(words);
+        for(String word:words)System.out.println(word);
+        
+    }
+    //60 Words in abc order
+            public static void main(String[] args){
+        ArrayList<String> words = new ArrayList<String>();
+        Scanner scan = new Scanner(System.in);
+        while(true)
+        {
+            System.out.print("Type a word: ");
+            String i = scan.nextLine();
+            if(i.equals(""))break;
+            words.add(i);
+        }
+        Collections.sort(words);
+        for(String word:words)System.out.println(word);
+        
+    }
+    //61 Amount of items in the list 
+        public static int countitems(ArrayList<String> list)
+    {
+        return list.size();
+    }
+    //61 Remove first
+        public static void removeFirst(ArrayList<String> list)
+    {
+        list.remove(0);
+    }
+    //62 Remove last 
+        public static void removeFirst(ArrayList<String> list)
+    {
+        list.remove(list.size()-1);
+    }
+    //63 Sum of the numbers
+        public static int suma(ArrayList<Integer> array)
+    {
+        int sum=0;
+        for(int number:array)sum+=number;
+        return sum;
+    }
+    //64 Average of numbers 
+        public static double prosjek(ArrayList<Integer> array)
+    {
+        int sum=0;
+        for(int number:array)sum+=number;
+        double prosjek =(double)sum/array.size();
+        return prosjek;
+    }
+    //65 The lengths of the strings
+    
