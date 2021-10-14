@@ -1,1 +1,12 @@
   //70 Combining ArrayLists
+  	public static void combine(ArrayList<Integer> lista1, ArrayList<Integer> lista2)
+	{
+	    for(int number:lista2)lista1.add(number);
+	    
+	}
+  //71 Smart combining
+  	public static void combine(ArrayList<Integer> lista1, ArrayList<Integer> lista2)
+	{
+	    for(int number:lista2)if(!(lista1.contains(number)))lista1.add(number);
+	}
+  //73 Product
