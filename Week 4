@@ -161,5 +161,88 @@ public static class LyyraCard{
 }
 
 //78 Clock using a counter
+    /*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package oop;
+
+/**
+ *
+ * @author Bilal
+ */
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+               BoundedCounter minutes = new BoundedCounter(59);
+        BoundedCounter hours = new BoundedCounter(23);
+
+        int i = 0;
+        while ( i < 121 ) {
+            System.out.println( hours + ":" + minutes);   // the current time printed
+            minutes.next();
+            if(minutes.getValue()==0)
+            {
+                hours.next();
+            }
+            i++;
+        }
+    }
+
+public static class BoundedCounter{
+    private int value;
+    private int upperBound;
     
+    public BoundedCounter(int limit)
+    {
+        this.upperBound=limit;
+    }
+    public void next()
+    {
+        if(this.value==this.upperBound)this.value=0;
+        else this.value++;
+    }
+    public String toString()
+    {
+        String returned=this.value+"";
+        if(this.value<10)
+        returned="0"+this.value;
+        if(this.value>10)
+            returned="1"+(this.value-10);
+    return returned;
+    }
+    public int getValue(){
+        return this.value;
+    }
+}
+}
+	//79 Number Statistics
+	final:
+	public static class NumberStatistics
+{
+    private int amountOfNumbers;
+    private int sum;
+    private double average;
+    
+    public void addNumber(int number)
+    {
+        this.amountOfNumbers++;
+        this.sum+=number;
+        this.average=(double)this.sum/amountOfNumbers;
+    }
+    public int amountOfNumbers(){
+        return this.amountOfNumbers;
+    }
+    public int sum()
+    {return this.sum;}
+    public double average()
+    {return this.average;}
+    
+}
+//80 Rolling the dice
+//81 Password randomizer
+//82 Lottery
+//83 Game logic for Hangman
 	
