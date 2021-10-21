@@ -242,7 +242,36 @@ public static class BoundedCounter{
     
 }
 //80 Rolling the dice
+public static class Dice{
+    private int sides;
+    private Random random ; 
+    public Dice(int numberOfSides){
+        this.sides=numberOfSides;
+        random=new Random(); 
+
+    }
+    public int roll(){
+    return this.random.nextInt(this.sides)+1;
+    }
+}
 //81 Password randomizer
-//82 Lottery
+public static class passwordrandomizer{
+    private int length;
+    private String password="";
+    private Random random=new Random();
+    public  passwordrandomizer(int passlength)
+    {
+        this.length=passlength;
+    }
+    public String createPassword()
+    {
+        this.password="";
+        for(int i=0;i<this.length;i++)
+       this.password+=(char)(random.nextInt(26)+'a');
+        return this.password;
+    }
+}
+//82 Lottery neuzubillah
+
 //83 Game logic for Hangman
 	
