@@ -1,0 +1,73 @@
+import java.util.*;
+
+public class Team
+{
+    private String name;
+    private int maxsize=16;
+    public Team(String Name)
+    {
+        this.name=Name;
+    }
+    
+    public String getName()
+    {
+        return this.name;
+    }
+    private ArrayList<Player> listplayers=new ArrayList<Player>();
+    public void addPlayer(Player newPlayer)
+    {
+        if(this.size()!=this.maxsize)
+        this.listplayers.add(newPlayer);
+    }
+    public void printPlayers()
+    {
+        for(Player player:listplayers)
+        System.out.println(player.toString());
+        
+    }
+    public void setMaxSize(int maxSize)
+    {
+        this.maxsize = maxSize;
+    }
+    public int size()
+    {
+        return this.listplayers.size();
+    }
+    public int goals()
+    {
+        int sum=0;
+        for(Player player:listplayers)
+        sum+=player.getGoals();
+        return sum;
+    }
+    
+}
+//////////////////////////////////////////////////////////////////////////////////
+import java.util.*;
+public class Player
+{
+    private String name;
+    private int amountofgoals;
+    public Player(String Name)
+    {
+        this.name=Name;
+    }
+    public Player(String Name,int AmountOfGoals)
+    {
+        this.name=Name;
+        this.amountofgoals=AmountOfGoals;
+    }
+    public String getName()
+    {
+        return this.name;
+    }
+    public int getGoals()
+    {
+        return this.amountofgoals;
+    }
+    public String toString()
+    {
+        return ("Player: "+this.name+", goals "+this.amountofgoals);
+    }
+    
+}
