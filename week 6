@@ -96,3 +96,214 @@ public class NightSky
     }
 }     
 //PART 2 LIBRARY
+//Book.java:
+public class Book
+{
+    private String title,publisher;
+    private int year;
+    
+    public Book(String Title,String Publisher,int Year)
+    {
+        this.title=Title; this.publisher=Publisher; this.year=Year;
+    }
+    public String title()
+    {
+        return this.title;
+    }
+    public String publisher()
+    {
+        return this.publisher;
+    }
+    public int year()
+    {
+        return this.year;
+    }
+    public String toString()
+    {
+        return (this.title+", "+this.publisher+", "+this.year);
+    }
+}
+//Library.java
+public class Library
+{
+    private ArrayList<Book> books = new ArrayList<Book>();
+    private StringUtils utils;
+    public Library()
+    {
+        this.books=new ArrayList<Book>();
+    }
+    public void addBook(Book newBook)
+    {
+        this.books.add(newBook);
+    }
+    public void printBooks()
+    {
+        for(Book book:this.books)
+        System.out.println(book);
+    }
+    
+    public ArrayList<Book> searchByTitle(String Title)
+    {
+        ArrayList<Book> found = new ArrayList<Book>();
+        for(Book book:this.books)
+        if(utils.includes(book.title(),Title)) found.add(book);
+        return found;
+    }
+    public ArrayList<Book> searchByYear(int Year)
+    {
+        ArrayList<Book> found = new ArrayList<Book>();
+        for(Book book:this.books)
+        if(book.year()==Year) found.add(book);
+        return found;
+    }
+    public ArrayList<Book> searchByPublisher(String Publisher)
+    {
+        ArrayList<Book> found=new ArrayList<Book>();
+        for(Book book:this.books)
+        if(utils.includes(book.publisher(),Publisher)) found.add(book);
+        return found;
+    }
+    
+}
+//StringUtils.java
+public class StringUtils
+{
+    public static boolean includes(String word, String searched)
+    {
+        if(word.trim().equals("")||searched.trim().equals(""))return false;
+        if(word.toLowerCase().contains(searched.toLowerCase().trim()))
+        return true;
+        else return false;
+    }
+}
+////////////////////////////////////////////////777
+//birdwatcehrs database
+public class Bird
+{
+    private String name,latinname;
+    
+    public Bird(String Name,String LatinName)
+    {
+        this.name=Name;
+        this.latinname=LatinName;
+    }
+    public String toString()
+    {
+        return (this.name+"(("+this.latinname+"))");
+    }
+}
+
+//main:
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		Database data=new Database();
+		while (true)
+		{
+		    System.out.println("?");
+		    switch(scan.nextLine().toLowerCase())
+		    {
+		        case "add":
+		            {
+		                System.out.println("Name: ");
+		                String Name=scan.nextLine();
+		                System.out.println("Latin Name: ");
+		                String LatinName=scan.nextLine();
+		                break;
+		            }
+		        case "show":
+		        {
+		            System.out.println("What?");
+		            String Name=scan.nextLine();
+		            System.out.println(data.searchByName(Name));
+		            break;
+		        }
+		        case "observation":
+		        {
+		            System.out.println("What was observed:?");
+		            String Name=scan.nextLine();
+		            (data.searchByName(Name)).observe();
+		            break;
+		        }
+		        case "statistics":
+		        {
+		            data.statistics();
+		            break;
+		        }
+		        case "quit":
+		        {
+		            System.exit(0);
+		            break;
+		        }
+		        default:
+		            System.out.println("Try again!");
+		    }
+		
+		}
+	}
+}
+// Bird.java
+public class Bird
+{
+    private String name,latinname;
+    private int timesobserved;
+    public int timesObserved()
+    {
+        return this.timesobserved;
+    }
+    public void observe()
+    {
+        this.timesobserved++;
+    }
+    public String Name()
+    {
+        return this.name;
+    }
+    public Bird(String Name,String LatinName)
+    {
+        this.name=Name;
+        this.latinname=LatinName;
+    }
+    public String toString()
+    {
+        return (this.name+"(("+this.latinname+")): "+timesobserved+" observations");
+    }
+}
+//database.java
+import java.util.*;
+public class Database
+{
+    private ArrayList<Bird> birds=new ArrayList<Bird>();
+    public Database()
+    {
+        
+    }
+    public void addbird(Bird birdey)
+    {
+        this.birds.add(birdey);
+    }
+    public void statistics()
+    {
+        for(Bird bird:birds)
+        {
+            System.out.println(bird);
+        }
+    }
+    public Bird searchByName(String Name)
+    {
+        Bird wantedbird = new Bird("","");
+        for(Bird bird:birds)
+        if(bird.Name().equals(Name))
+        wantedbird= bird;
+        return (wantedbird);
+    }
+}
