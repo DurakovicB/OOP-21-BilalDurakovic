@@ -27,3 +27,104 @@ public class Dictionary
     }
 }
 // ADDITIONAL
+public class Counter
+{
+    private int limit=999;
+    private int count01=0;
+    private int count010=0;
+    private int count1=0;
+    private int count10=0;
+    public Counter(int Limit)
+    {
+        this.limit=Limit;
+    }
+    public void reset()
+    {
+        this.count01=0;
+        this.count010=0;
+        this.count1=0;
+        this.count10=0;
+    }
+    public void incr01()
+    {
+        this.count01++;
+        if(count01==10)
+        {
+            this.incr010();
+            count01=0;
+        }
+        overflowlimit();
+    }
+    public void incr010()
+    {
+        this.count010++;
+        if(count010==10)
+        {
+            this.incr1();
+            count010=0;
+        }
+        overflowlimit();
+    }
+    public void incr1()
+    {
+        this.count1++;
+        if(count1==10)
+        {
+            count1=0;
+            this.incr10();
+        }
+    overflowlimit();
+
+    }
+    public void incr10()
+    {
+        this.count10++;
+        overflowlimit();
+    }
+    public boolean owerflowlimit()
+    {
+        if(this.fullcount()>limit)
+        {
+            System.out.println("OWERFLOW");
+            this.reset();
+        }
+    }
+    public int fullcount()
+    {
+        return count01+count010+count1+count10;
+    }
+    
+}
+
+//////////////////////////
+public class Month
+{
+    private int num;
+    
+    public Month(String a, String b, String c)
+    {
+        String month=a+b+c;
+        switch(month.trim.toLowerCase())
+        {
+            case "jan": this.num=1;
+            case "feb": this.num=2;
+            case "mar": this.num=3;
+            case "apr": this.num=4;
+            case "may": this.num=5;
+            case "jun": this.num=6;
+            case "jul": this.num=7;
+            case "aug": this.num=8;
+            case "sep": this.num=9;
+            case "oct": this.num=10;
+            case "nov": this.num=11;
+            case "dec": this.num=12;
+            default: num=1;
+                
+        }
+    }
+    public Month(int number)
+    {
+        this.num=number;
+    }
+    
+}
