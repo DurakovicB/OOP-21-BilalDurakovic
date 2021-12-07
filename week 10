@@ -1,0 +1,88 @@
+/// RegistrationPlate
+public class RegistrationPlate {
+    // ATTENTION: the object variable types are final, meaning that their value cannot be changed!
+    private final String regCode;
+    private final String country;
+    public String GetRegCode()
+    {
+        return this.regCode;
+    }
+    public String GetCountry()
+    {
+        return this.country;
+    }
+    public RegistrationPlate(String regCode, String country) {
+       this.regCode = regCode;
+       this.country = country;
+    }
+
+    public String toString(){
+        return country+ " " +regCode;
+    }
+    @Override
+    public boolean equals(Object object)
+    {
+        if(object==null) return false;
+        
+        if(this.getClass()!=object.getClass()) return false;
+        
+        RegistrationPlate compared=(RegistrationPlate) object;
+        
+        if(this.regCode.equals(compared.GetRegCode()) && this.country.equals(compared.GetCountry()))
+        return true;
+        else return false;
+    }
+    
+    public int hashCode()
+    {
+        if(this.country==null || this.regCode==null )return 1;
+        
+        int counter=0;
+        for(int i=0;i<this.regCode.length();i++)
+        {
+            char c=this.regCode.charAt(i);
+            if(c=='a' || (c=='b'))counter++;
+        }
+        int hashCode=this.country.length()*this.regCode.length()+counter;
+        return hashCode;
+    }
+}
+//VEHICLE REGISTER
+import java.util.*;
+public class VehicleRegister
+{
+    HashMap<RegistrationPlate,String> owners = new HashMap<RegistrationPlate,String>();
+    
+    public boolean add(RegistrationPlate plate, String owner)
+    {
+        if(owners.get(plate)==null)
+        {
+        this.owners.put(plate, owner);
+        return true;
+        }
+        else return false;
+    }
+    
+    public String get(RegistrationPlate plate)
+    {
+        return this.owners.get(plate);
+    }
+    public boolean delete(RegistrationPlate plate)
+    {
+        if(plate.hashCode()==1) return false;
+        this.owners.remove(plate);
+        return true ;
+    }
+    public void printRegistrationPlates()
+    {
+        for(RegistrationPlate plate:this.owners.keySet())
+        System.out.println(plate);
+        
+    }
+    public void printOwners()
+    {
+        for(String owner:this.owners.values())
+        System.out.println(owner);
+    }
+}
+///// 10: NATIONAL SERVICE
