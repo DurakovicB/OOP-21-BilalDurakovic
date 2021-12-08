@@ -85,4 +85,122 @@ public class VehicleRegister
         System.out.println(owner);
     }
 }
-///// 10: NATIONAL SERVICE
+///// 10: NATIONAL SERVICE:
+//Civil service:
+public class CivilService implements NationalService
+{
+    private int daysLeft;
+    public CivilService()
+    {
+        this.daysLeft=362;
+    }
+    public int getDaysLeft()
+    {
+        return this.daysLeft;
+    }
+    public void work()
+    {
+        this.daysLeft--;
+    }
+}
+///MilitaryService:
+public class MilitaryService implements NationalService
+{
+  private int daysLeft;
+  public MilitaryService (int days)
+  {
+    this.daysLeft = days;
+  }
+  public int getDaysLeft ()
+  {
+    return this.daysLeft;
+  }
+  public void work ()
+  {
+    this.daysLeft--;
+    if (this.daysLeft < 0)
+    {
+     this.daysLeft++;
+     System.out.println("Error, no days left");
+    }
+  }
+}
+///////////////7
+//ToBeStored
+//book.java:
+public class Book implements ToBeStored
+{
+    private double weight;
+    private String writer;
+    private String name;
+    
+    public Book(String Writer, String Name,double Weight)
+    {
+        this.weight=Weight;
+        this.writer=Writer;
+        this.name=Name;
+    }
+    public double weight()
+    {
+        return this.weight;
+    }
+    public String toString()
+    {
+        return this.writer+": "+this.name;
+    }
+}
+//CD.java:
+public class CD implements ToBeStored
+{
+    public double weight()
+    {
+        return 0.1;
+    }
+    private String artist;
+    private String title;
+    private int publishingYear;
+    
+    public CD(String Artist, String Title, int Publishingyear)
+    {
+        this.artist=Artist;
+        this.title =Title;
+        this.publishingYear=Publishingyear;
+    }
+    @Override
+    public String toString()
+    {
+        return artist +": "+title+", "+publishingYear;
+    }
+}
+//Box.java
+import java.util.*;
+public class Box
+{
+ private double maxweight;
+ private int maxcapacity;
+ private ArrayList<ToBeStored> things=new ArrayList<ToBeStored>();
+ public Box(double maxw)
+ {
+     this.maxweight=maxw;
+ }
+public void add(ToBeStored thing)
+{
+    if(this.totalweight()+thing.weight()<maxweight ) 
+    things.add(thing);
+}
+ private double totalweight()
+ {
+     double total=0;
+     for(ToBeStored thing:things)
+     {
+        total+=thing.weight();
+     }
+     return total;
+ }
+ public String toString()
+ {
+     return "Box: "+things.size()+" things, total weight: "+totalweight()+" kg";
+ }
+}
+//OnlineShop
+
