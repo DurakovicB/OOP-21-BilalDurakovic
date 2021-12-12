@@ -203,4 +203,156 @@ public void add(ToBeStored thing)
  }
 }
 //OnlineShop
+//Storehouse.java
+import java.util.*;
+public class Storehouse
+{
+    private Map<String, Integer> prices = new HashMap<String, Integer>();
+    private Map<String, Integer> stocks = new HashMap<String, Integer>();
+    
+    public void addProduct(String product, int price, int stock)
+    {
+        this.prices.put(product, price);
+        this.stocks.put(product, stock);
+    }
+    public int price(String product)
+    {
+        if(this.prices.get(product)!=null) return -99;
+        else return prices.get(product);
+    }
+    public int stock(String product)
+    {
+        if(this.stocks.get(product)==null)return 0;
+        else return stocks.get(product);
+    }
+    public boolean take(String product)
+    {
+        if(this.stocks.get(product)==null || this.stocks.get(product)==0)return false;
+        else 
+        {
+           this.stocks.put(product, this.stocks.get(product)-1);
+           return true;
+        }
+    }
+    public Set<String> products()
+    {
+        Set<String> products= this.prices.keySet();
+        return products;
+    }
+    
+}
+//Purchase.java
+public class Purchase
+{
+    private String product;
+    private int amount, unitPrice;
+    public Purchase(String product, int amount,int unitPrice)
+    {
+        this.product=product;
+        this.amount=amount;
+        this.unitPrice=unitPrice;
+    }
+    public int price()
+    {
+        return this.amount*this.unitPrice;
+    }
+    public void increaseAmount()
+    {
+        this.amount++;
+    }
+    public String toString()
+    {
+        return product +": "+amount;
+    }
+}
+//ShoppingBasket.java
+import java.util.*;
+public class ShoppingBasket
+{
+    private Map<String, Purchase> map= new HashMap<String,Purchase>();
+    public void add(String Product, int price)
+    {
+        if(this.map.get(Product)!=null) this.map.get(Product).increaseAmount();
+        else
+        this.map.put(Product,new Purchase(Product,1,price));
+    }
+    public int price()
+    {
+        int price=0;
+        for(String product:map.keySet())
+            price+=map.get(product).price();
+        return price;
+    }
+    public void print()
+    {
+        for(Purchase pur:this.map.values())
+        System.out.println(pur);
+    }
+//Shop.java 
+import java.util.*;
+
+public class Shop {
+
+    private Storehouse store;
+    private Scanner reader;
+
+    public Shop(Storehouse store, Scanner reader) {
+        this.store = store;
+        this.reader = reader;
+    }
+
+    // the method to deal with a customer in the shop
+    public void manage(String customer) {
+        ShoppingBasket basket = new ShoppingBasket();
+        System.out.println("Welcome to our shop " + customer);
+        System.out.println("below is our sale offer:");
+
+        for (String product : store.products()) {
+            System.out.println( product );
+        }
+
+        while (true) {
+            System.out.print("what do you want to buy (press enter to pay):");
+            String product = reader.nextLine();
+            if (product.isEmpty()) {
+                break;
+            }
+            else if(store.stock(product)>0)
+            {
+            basket.add(product, store.price(product));
+            store.take(product);
+            }
+            
+            // here, you write the code to add a product to the shopping basket, if the storehouse is not empty
+            // and decreases the storehouse stocks
+            // do not touch the rest of the code!
+
+        }
+
+        System.out.println("your purchases are:");
+        basket.print();
+        System.out.println("basket price: " + basket.price());
+    }
+}
+//GEnerics
+//Rich first, poor last
+//Person.java
+public class Person implements Comparable<Person>
+{
+    private String Name;
+    private int salary;
+    
+    @Override 
+    public int compareTo(Person person)
+    {
+        if(person == null ) return 0;
+        
+        return this.salary-person.getSalary();
+    }
+    public int getSalary()
+    {
+        return this.salary;
+    }
+}
+
 
