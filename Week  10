@@ -213,4 +213,73 @@ public class ConstantSensor implements Sensor{
         return this.measure;
     }
 }
-//
+//Printer
+//Printer.java
+import java.io.File;
+import java.util.*;
+public class Printer {
+    private String fileName;
+    private Scanner read;
+    public Printer(String fileName) throws Exception
+    {
+        File f=new File(fileName);
+        this.fileName=fileName;
+        this.read=new Scanner(f,"UTF-8");
+    }
+    public void printLinesWhichContain(String word)
+    {
+        if(word==""||word==" ")
+        {
+            while(this.read.hasNext())System.out.println(read.next());
+        }
+        else
+        while(this.read.hasNext())
+        {
+            String line= read.nextLine();
+            if(line.contains(word))System.out.println(line);
+        }
+    }
+}
+// File analysis
+//Analysis.java
+package file;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.util.*;
+
+public class Analysis {
+    private File f= new File("examplefile.txt");
+    private Scanner read;
+    public Analysis(File f) throws FileNotFoundException {
+        this.f=f;
+        this.read=new Scanner(this.f);
+    }
+    public int lines() throws FileNotFoundException {
+        Scanner scan2=new Scanner(this.f);
+        int size=0;
+        while(scan2.hasNext())
+        {
+            scan2.nextLine();
+            size++;
+        }
+        return size;
+
+    }
+    public int characters() throws FileNotFoundException
+    {
+        Scanner scan2=new Scanner(this.f);
+        int size=0;
+        while(scan2.hasNext())
+        {
+            int linesize=0;
+            for(char c:scan2.next().toCharArray())
+                linesize++;
+            size+=linesize;
+            
+        }
+        return size;
+    }
+}
+//Word Inspection
