@@ -1,0 +1,216 @@
+//mooc package
+//UserInterface.java
+package mooc.ui;
+public interface UserInterface {
+     void update();
+}
+//TextUserInterface.java
+package mooc.ui;
+
+public class TextUserInterface implements UserInterface{
+    @Override
+    public void update() {
+        System.out.println("Updating the user interface");
+    }
+}
+//ApplicationJava
+package mooc.logic;
+
+import mooc.ui.UserInterface;
+
+public class ApplicationLogic {
+    private UserInterface ui;
+    public ApplicationLogic(UserInterface ui)
+    {
+        this.ui=ui;
+    }
+    public void execute(int howManyTimes)
+    {
+        for(int i=0;i<howManyTimes;i++) {
+            System.out.println("The application logic works.");
+            this.ui.update();
+        }
+    }
+}
+//Moving
+//Thing.java
+package moving.domain;
+public interface Thing {
+    int getVolume();
+}
+
+//Item.java
+package moving.domain;
+import moving.domain.Thing;
+public class Item implements moving.domain.Thing,Comparable<Item>{
+    private String name;
+    private int volume;
+    public Item(String name,int volume)
+    {
+        this.name=name;
+        this.volume=volume;
+    }
+    public String getName()
+    {
+        return this.name;
+    }
+    @Override
+    public String toString()
+    {
+        return this.name +" ("+volume +" dm^3)";
+    }
+    @Override
+    public int getVolume() {
+        return 0;
+    }
+
+    @Override
+    public int compareTo(Item i) {
+        if(this.volume<i.volume)return -1;
+        else if(this.volume==i.volume)return 0;
+        else return 1;
+    }
+}
+
+//Box,java
+package moving.domain;
+import moving.domain.Thing;
+
+import java.util.*;
+
+public class Box implements Thing{
+    private int maxCapacity;
+    public ArrayList<Thing> list=new ArrayList<Thing>();
+    public Box(int maxCapacity)
+    {
+        this.maxCapacity=maxCapacity;
+    }
+    public boolean addThing(Thing thing)
+    {
+        if(this.list.size()!=this.maxCapacity)
+        this.list.add(thing);
+        else return false;
+        return true;
+    }
+    @Override
+    public int getVolume() {
+        return this.list.size();
+    }
+}
+
+//Packer.java
+package moving.logic;
+import moving.domain.*;
+import java.util.*;
+public class Packer {
+    private int boxVolume;
+
+    public Packer(int boxVolume)
+    {
+        this.boxVolume=boxVolume;
+    }
+    public List<Box> packthings(List<Thing> things)
+    {
+        List<Box> list=new ArrayList<Box>();
+
+
+        return list;
+    }
+}
+
+//Sensors
+//Thermometer.java
+import java.util.Random;
+
+public class Thermometer implements Sensor{
+    private boolean on=true;
+    private Random rand=new Random();
+    @Override
+    public boolean isOn() {
+        return on;
+    }
+
+    @Override
+    public void on() {
+
+    }
+
+    @Override
+    public void off() {
+
+    }
+
+    @Override
+    public int measure() {
+            if (this.isOn()) return rand.nextInt(60) - 30;
+            else throw new IllegalStateException("thermometer not on");
+    }
+}
+//AverageSensor.java
+import java.util.ArrayList;
+import java.util.List;
+
+public class AverageSensor implements Sensor{
+    private ArrayList<Sensor> list=new ArrayList<Sensor>();
+    public void addSensor(Sensor sensor)
+    {
+        this.list.add(sensor);
+    }
+    @Override
+    public boolean isOn() {
+        for(Sensor s:this.list)
+            if(!s.isOn()) return false;
+        return true;
+    }
+
+    @Override
+    public void on() {
+        for(Sensor s:this.list) s.on();
+    }
+
+    @Override
+    public void off() {
+        for(Sensor s:this.list) s.off();
+    }
+
+    @Override
+    public int measure() {
+        int sum=0;
+        for(Sensor s:this.list) sum+=s.measure();
+        return (int)(sum/ this.list.size());
+    }
+    public List<Integer> readings()
+    {
+        List<Integer> readings=new ArrayList<Integer>();
+        for(Sensor s:list)
+            readings.add(s.measure());
+        return readings();
+    }
+}
+//ConstantSensor.java
+public class ConstantSensor implements Sensor{
+    private int measure;
+    public ConstantSensor(int measure)
+    {
+        this.measure=measure;
+    }
+    @Override
+    public boolean isOn() {
+        return true;
+    }
+
+    @Override
+    public void on() {
+
+    }
+
+    @Override
+    public void off() {
+    }
+
+    @Override
+    public int measure() {
+        return this.measure;
+    }
+}
+//
