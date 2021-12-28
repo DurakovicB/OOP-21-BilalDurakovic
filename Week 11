@@ -1,0 +1,114 @@
+// Group/Organism
+//Group.java
+package movable;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Group implements Movable{
+    private ArrayList<Organism> list =new ArrayList<>();
+
+    public void addToGroup(Movable movable)
+    {
+        this.list.add((Organism)movable);
+    }
+    public String toString()
+    {
+        String Final="";
+        for(Organism org: list)
+        {
+            Final+=org;
+            Final+="\n";
+        }
+        return Final;
+    }
+    @Override
+    public void move(int dx, int dy)
+    {
+        for(Organism org:list) org.move(dx,dy);
+    }
+}
+//Organism.java
+package movable;
+
+public class Organism implements Movable{
+    private int x,y;
+
+    @Override
+    public String toString()
+    {
+        return "x: "+x+";y: "+y;
+    }
+    public Organism(int x, int y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+
+    @Override
+    public void move(int dx, int dy)
+    {
+        this.x+=dx;
+        this.y+=dy;
+    }
+}
+/////////////// Person and their heirs
+//Teacher.java
+package people;
+
+public class Teacher extends Person{
+    private int salary;
+    public Teacher(String name, String info,int salary)
+    {
+        super(name,info);
+        this.salary=salary;
+    }
+    public String toString()
+    {
+        return this.name+"\n"+"   "+info+"\n  salary: "+this.salary+" euros/month";
+    }
+}
+//Student.java
+package people;
+
+public class Student extends Person{
+    private int credits;
+    public void study()
+    {
+        this.credits++;
+    }
+    public int credits()
+    {
+        return this.credits;
+    }
+    public Student(String name, String info) {
+        super(name, info);
+        this.credits=0;
+    }
+    @Override
+    public String toString()
+    {
+        return this.name+"\n"+"  "+info+"\n  credits "+this.credits;
+
+    }
+}
+// Person.java
+package people;
+
+public class Person {
+    protected String name,info;
+
+    public Person(String name, String info)
+    {
+        this.name=name;
+        this.info=info;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.name+"\n"+"   "+info;
+    }
+}
+/////////////////////////////////////////////Farm simulator
+
